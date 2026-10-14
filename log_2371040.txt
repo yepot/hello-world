@@ -1,0 +1,8 @@
+b2dcdc5 fix
+9a89ff4 docs: practice.md 기본 구조 작성
+4859e4e Merge pull request #2 from yepot/feature/portfolio
+16e95d5 docs: 이번 달 학습 목표 추가
+292f9b8 docs: 기술 스택 목록 추가
+84cec7c Merge pull request #1 from yepot/readme-edits
+c2381f0 Update README
+6321433 Initial commit

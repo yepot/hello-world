@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your Name - Accessible Portfolio</title>
+    <meta name="description" content="Explore Your Name's web development skills, project statistics, and accessible portfolio, with a contact form demonstration.">
+    <meta name="author" content="Your Name">
+    <meta property="og:title" content="Your Name - Accessible Portfolio">
+    <meta property="og:description" content="Explore Your Name's web development skills, project statistics, and accessible portfolio, with a contact form demonstration.">
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, sans-serif;
+        line-height: 1.6;
+        color: #172033;
+        background: #f7f8fc;
+      }
+
+      * { box-sizing: border-box; }
+      body { margin: 0; }
+      [hidden] { display: none !important; }
+
+      header, main, footer {
+        width: min(100% - 2rem, 68rem);
+        margin-inline: auto;
+      }
+
+      header { padding-block: 2rem; }
+      h1, h2, h3 { line-height: 1.25; }
+      h1 { margin-top: 0; font-size: clamp(1.75rem, 5vw, 2.75rem); }
+      h2 { margin-top: 0; font-size: 1.75rem; }
+      h3 { font-size: 1.125rem; }
+      p, li, label, figcaption { overflow-wrap: anywhere; }
+      a { color: #2543a8; text-underline-offset: 0.2em; }
+      a:hover { text-decoration-thickness: 0.15em; }
+
+      :focus-visible {
+        outline: 3px solid #2543a8;
+        outline-offset: 4px;
+      }
+
+      .skip-link {
+        position: absolute;
+        top: 0.5rem;
+        left: 1rem;
+        z-index: 1;
+        padding: 0.75rem 1rem;
+        color: #fff;
+        background: #172033;
+        transform: translateY(-200%);
+      }
+
+      .skip-link:focus { transform: translateY(0); }
+
+      nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0.5rem;
+        font-weight: 600;
+      }
+
+      section {
+        margin-bottom: 1.5rem;
+        padding: clamp(1rem, 4vw, 2rem);
+        border: 1px solid #d1d5db;
+        border-radius: 0.75rem;
+        background: #fff;
+        scroll-margin-top: 1rem;
+      }
+
+      .about-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .about-content p { flex: 1 1 16rem; }
+
+      .portrait {
+        display: block;
+        width: min(100%, 15rem);
+        height: auto;
+      }
+
+      .note, figcaption { color: #4b5563; }
+      .table-container { overflow-x: auto; }
+      table { width: 100%; border-collapse: collapse; }
+      caption { padding-bottom: 0.75rem; font-weight: 700; text-align: left; }
+      th, td { padding: 0.75rem; border: 1px solid #64748b; text-align: left; }
+      thead { background: #eef2ff; }
+      figure { margin: 2rem 0 0; }
+      video { display: block; max-width: 100%; height: auto; background: #172033; }
+      figcaption { margin-top: 0.75rem; }
+      form { max-width: 42rem; }
+      fieldset { min-width: 0; margin: 1.5rem 0; padding: 1rem; border: 1px solid #64748b; }
+      legend { padding-inline: 0.5rem; font-weight: 700; }
+      .field { margin-bottom: 1.25rem; }
+      fieldset .field:last-child { margin-bottom: 0; }
+      label { display: block; margin-bottom: 0.35rem; font-weight: 600; }
+
+      input:not([type="checkbox"]), select, textarea {
+        display: block;
+        width: 100%;
+        min-height: 44px;
+        padding: 0.75rem;
+        border: 1px solid #64748b;
+        border-radius: 0.25rem;
+        font: inherit;
+        color: inherit;
+        background: #fff;
+      }
+
+      textarea { resize: vertical; }
+      .consent { display: flex; align-items: flex-start; gap: 0.75rem; }
+      .consent input { flex-shrink: 0; width: 1.25rem; height: 1.25rem; margin-top: 0.4rem; }
+      .consent label { padding-block: 0.2rem; }
+      .field-error { margin: 0.5rem 0 0; color: #9f1239; font-weight: 600; }
+      [aria-invalid="true"] { border: 2px solid #9f1239; }
+      .error-summary { margin-block: 1rem; padding: 1rem; border: 2px solid #9f1239; }
+      .error-summary h3 { margin-top: 0; }
+
+      button {
+        min-height: 44px;
+        padding: 0.75rem 1.25rem;
+        border: 2px solid #2543a8;
+        border-radius: 0.25rem;
+        font: inherit;
+        font-weight: 700;
+        color: #fff;
+        background: #2543a8;
+        cursor: pointer;
+      }
+
+      button:hover { background: #172033; }
+      footer { padding-block: 1rem 2rem; color: #4b5563; }
+
+      @media (forced-colors: active) {
+        :focus-visible { outline-color: Highlight; }
+        button { border-color: ButtonText; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header>
+      <h1>Your Name - Accessible Portfolio</h1>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading">About</h2>
+        <div class="about-content">
+          <p>
+            Hello, I'm Your Name. I enjoy building websites that are clear,
+            responsive, and easy to use. My work focuses on semantic HTML,
+            thoughtful design, and making the web accessible to everyone.
+          </p>
+          <img class="portrait" src="portrait.jpg" width="480" height="480"
+               alt="Profile illustration of a brown-haired person looking over a silver laptop">
+        </div>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-heading">
+        <h2 id="skills-heading">Skills</h2>
+        <ul>
+          <li>Semantic HTML5 and accessible document structure</li>
+          <li>CSS layouts with Flexbox, Grid, and responsive design</li>
+          <li>JavaScript and progressive enhancement</li>
+          <li>Keyboard navigation and accessible forms</li>
+          <li>Git version control and collaborative development</li>
+        </ul>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-heading">
+        <h2 id="projects-heading">Project Stats &amp; Media</h2>
+        <p class="note" id="stats-note">
+          These example figures illustrate how project totals can be presented
+          in an accessible data table.
+        </p>
+        <div class="table-container" role="region" aria-label="Project statistics" tabindex="0">
+          <table aria-describedby="stats-note">
+            <caption>Completed projects by year</caption>
+            <thead>
+              <tr>
+                <th scope="col">Year</th>
+                <th scope="col">Websites</th>
+                <th scope="col">Web applications</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">2024</th>
+                <td>2</td>
+                <td>1</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <th scope="row">2025</th>
+                <td>3</td>
+                <td>2</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <th scope="row">2026</th>
+                <td>2</td>
+                <td>2</td>
+                <td>4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <figure>
+          <video controls width="480" poster="poster.jpg" preload="metadata"
+                 aria-label="Silent profile illustration demonstration"
+                 aria-describedby="video-description">
+            <source src="demo.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+            <a href="demo.mp4">Download the demonstration video</a>
+            or read the text description below.
+          </video>
+          <figcaption>A short, silent demonstration of editing the profile illustration.</figcaption>
+        </figure>
+        <h3>Video description</h3>
+        <p id="video-description">
+          The recording shows a brown-haired character behind a silver laptop
+          on a light canvas. The illustration is selected with a blue bounding
+          box and rotated using an on-screen handle. There is no audio.
+        </p>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact</h2>
+        <p id="form-instructions">
+          Fields marked “required” must be completed. Phone is optional.
+          This demonstration validates your entries locally; it does not send
+          or store messages.
+        </p>
+        <noscript>
+          <p>JavaScript is needed to validate this demonstration form. Messages cannot be sent from this page.</p>
+        </noscript>
+        <form action="#" method="post" novalidate aria-describedby="form-instructions">
+          <div class="error-summary" id="error-summary" role="group" tabindex="-1"
+               aria-labelledby="error-heading" hidden>
+            <h3 id="error-heading">Please correct the following fields</h3>
+            <ul id="error-list"></ul>
+          </div>
+
+          <fieldset>
+            <legend>Your details</legend>
+            <div class="field">
+              <label for="full-name">Full name (required)</label>
+              <input id="full-name" name="full-name" type="text" required
+                     autocomplete="name" aria-describedby="full-name-error">
+              <p class="field-error" id="full-name-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="email">Email (required)</label>
+              <input id="email" name="email" type="email" required
+                     autocomplete="email" aria-describedby="email-error">
+              <p class="field-error" id="email-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="phone">Phone (optional)</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="topic">Topic (required)</label>
+            <select id="topic" name="topic" required aria-describedby="topic-error">
+              <option value="">Choose...</option>
+              <option value="project">Project enquiry</option>
+              <option value="collaboration">Collaboration</option>
+              <option value="accessibility">Accessibility feedback</option>
+            </select>
+            <p class="field-error" id="topic-error" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="message">Message (required)</label>
+            <textarea id="message" name="message" rows="4" required
+                      aria-describedby="message-error"></textarea>
+            <p class="field-error" id="message-error" hidden></p>
+          </div>
+
+          <div class="field">
+            <div class="consent">
+              <input id="consent" name="consent" type="checkbox" value="yes"
+                     required aria-describedby="consent-error">
+              <label for="consent">I agree to be contacted about my message (required).</label>
+            </div>
+            <p class="field-error" id="consent-error" hidden></p>
+          </div>
+
+          <button type="submit" disabled>Check message</button>
+          <p id="form-status" role="status" aria-atomic="true"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p><small>&copy; 2026 Your Name. All rights reserved.</small></p>
+    </footer>
+
+    <script>
+      const form = document.querySelector('form');
+      const summary = document.getElementById('error-summary');
+      const errorList = document.getElementById('error-list');
+      const status = document.getElementById('form-status');
+      const requiredFields = Array.from(form.querySelectorAll('[required]'));
+      const messages = {
+        'full-name': 'Enter your full name.',
+        email: 'Enter your email address.',
+        topic: 'Choose a topic.',
+        message: 'Enter a message.',
+        consent: 'Confirm that you agree to be contacted.'
+      };
+      let hasSubmitted = false;
+
+      function validateField(field) {
+        const error = document.getElementById(`${field.id}-error`);
+        let message = '';
+        const isEmpty = field.type === 'checkbox'
+          ? !field.checked
+          : field.value.trim() === '';
+
+        if (isEmpty) {
+          message = messages[field.id];
+        } else if (field.type === 'email' && field.validity.typeMismatch) {
+          message = 'Enter an email address such as name@example.com.';
+        }
+
+        error.textContent = message;
+        error.hidden = message === '';
+        if (message) {
+          field.setAttribute('aria-invalid', 'true');
+        } else {
+          field.removeAttribute('aria-invalid');
+        }
+        return message;
+      }
+
+      function validateForm() {
+        errorList.replaceChildren();
+        for (const field of requiredFields) {
+          const message = validateField(field);
+          if (message) {
+            const item = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = `#${field.id}`;
+            link.textContent = message;
+            link.addEventListener('click', (event) => {
+              event.preventDefault();
+              field.focus();
+            });
+            item.append(link);
+            errorList.append(item);
+          }
+        }
+        summary.hidden = errorList.childElementCount === 0;
+        return summary.hidden;
+      }
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        hasSubmitted = true;
+        status.textContent = '';
+        if (validateForm()) {
+          status.textContent = 'Your message passes validation. This demonstration has not sent or stored your message.';
+        } else {
+          summary.focus();
+        }
+      });
+
+      form.addEventListener('input', (event) => {
+        status.textContent = '';
+        if (hasSubmitted && requiredFields.includes(event.target)) {
+          validateForm();
+        }
+      });
+
+      form.querySelector('button[type="submit"]').disabled = false;
+    </script>
+  </body>
+</html>
