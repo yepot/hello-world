@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Practice</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: #f1f5f9;
+      color: #1e293b;
+      font-family: Arial, sans-serif;
+    }
+
+    main {
+      width: 100%;
+      max-width: 480px;
+      padding: 40px 24px;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      background: #ffffff;
+      box-shadow: 0 12px 32px rgba(30, 41, 59, 0.08);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      color: #1e293b;
+      font-size: 30px;
+    }
+
+    #output {
+      margin: 28px 0;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: 1px solid #2563eb;
+      border-radius: 10px;
+      background: #2563eb;
+      color: #ffffff;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    #reset {
+      border-color: #cbd5e1;
+      background: #f8fafc;
+      color: #334155;
+    }
+
+    #reset:hover {
+      background: #e2e8f0;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #2563eb;
+      outline-offset: 4px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 id="title">JavaScript Practice</h1>
+    <p id="output" aria-live="polite">Clicks: 0</p>
+    <div class="buttons">
+      <button id="btn" type="button">Click me</button>
+      <button id="reset" type="button">Reset</button>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
